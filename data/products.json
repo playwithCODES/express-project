@@ -1,6 +1,6 @@
 [
   {
-    "_id": "6894c7d917014cfa146a1df8",
+    "id": 1,
     "name": "Jagadamba Rod 16 mm 1 Bundle",
     "brand": "Jagadamba",
     "category": "Hardwares",
@@ -10,7 +10,7 @@
    
   },
   {
-    "_id": "6894c82e17014cfa146a1dfa",
+   "id": 2,
     "name": "UPVC 5 Layered 1000 Liters water tank",
     "brand": "Nepatop",
     "category": "Hardwares",
@@ -20,7 +20,7 @@
    
   },
   {
-    "_id": "68ab233054cc115492cb769e",
+   "id": 3,
     "name": "Iphone 16 pro max",
     "brand": "Apple",
     "category": "Smartphones",
@@ -29,7 +29,7 @@
     "stock": 15
   },
   {
-    "_id": "68ab2a7454cc115492cb7705",
+   "id": 4,
     "name": "Samsung Galaxy S25 Ultra",
     "brand": "Samsung",
     "category": "Smartphones",
@@ -39,7 +39,7 @@
 
   },
   {
-    "_id": "68ab2ad654cc115492cb770a",
+    "id": 5,
     "name": "Google Pixel 10 Pro XL",
     "brand": "Google",
     "category": "Smartphones",
@@ -48,7 +48,7 @@
     "stock": 5 
   },
   {
-    "_id": "68b1bd5e7afd90b2ad3abceb",
+    "id": 6,
     "name": "Mechanical Keyboard Full-sized Backlight RGB",
     "brand": "Fantech",
     "category": "Electronics",
@@ -57,7 +57,7 @@
     "stock": 5
   },
   {
-    "_id": "68b1bead7afd90b2ad3abcf1",
+   "id": 7,
     "name": "Samsung M14 6GB/256GB Black ",
     "brand": "Samsung",
     "category": "Smartphones",
@@ -67,7 +67,7 @@
 
   },
   {
-    "_id": "68b1bf177afd90b2ad3abcf4",
+   "id": 8,
     "name": "Samsung A18 4GB/128GB Sky Blue Triple camera",
     "brand": "Samsung",
     "category": "Smartphones",
@@ -76,7 +76,7 @@
     "stock": 30
   },
   {
-    "_id": "68b1c6877afd90b2ad3abd01",
+    "id": 9,
     "name": "Dell XPS 13 Plus 9320 Touch Screen",
     "brand": "Dell",
     "category": "Laptops",
@@ -86,7 +86,7 @@
    
   },
   {
-    "_id": "68b1c71c7afd90b2ad3abd06",
+   "id": 10,
     "name": "Samsung Galaxy Book",
     "brand": "Samsung",
     "category": "Laptops",
@@ -96,7 +96,7 @@
 
   },
   {
-    "_id": "68b856c6c0115e348c50ffa3",
+   "id": 11,
     "name": "MacBook Air M4 16GB 256GB",
     "brand": "Apple",
     "category": "Laptops",
@@ -105,7 +105,7 @@
     "stock": 23  
   },
   {
-    "_id": "68b856f7ec9f4db4eac64f62",
+    "id": 12,
     "name": "Macbook Pro M4",
     "brand": "Apple",
     "category": "Laptops",
@@ -114,7 +114,7 @@
     "stock": 12
   },
   {
-    "_id": "68b8572cc0115e348c50ffa5",
+    "id": 13,
     "name": "MacBook Pro M4 Pro 24GB 512 GB 14\"",
     "brand": "Apple",
     "category": "Laptops",
@@ -122,7 +122,7 @@
     "createdAt": "2025-09-03T14:21:41.781Z"
   },
   {
-    "_id": "68d1667dd39e032ef6df2baf",
+    "id": 14,
     "name": "Premier Steel Pipes",
     "brand": "Premier",
     "category": "Hardwares",
