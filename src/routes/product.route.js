@@ -16,4 +16,7 @@ router.get("/:id", productController.getProductById);
 // });
 
 
+//POST/api/products
+router.post("/",productController.createProduct);
+
 export default router;

@@ -1,4 +1,4 @@
-##Layered ARchitecture
+   ## Layered ARchitecture
 1.API Layer
   a.Routes
   -Handle the routes/endpoints
@@ -10,3 +10,38 @@
 
 2.Business Logic Layer
   a.Services
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ## JSON
+  1.JSON data lai Javascript bujhney banaunu xa vaney tyo bela JSON.parse() garnu parxa (JSON lai Javascript ma convert garnu xa vaney)
+  2.Javascript object ma xa teslai JSON ma convert garnu xa vaney JSON.stringify(Javascipt lai JSON ma convert garnu xa vaney)
+
+  ## Mongo DB
+    -Non Relational Database
+    -Data are stored in collections & documents
+    -Database:Main Container, where all collection of data are store.
+    -Collection:Equivalent to table of relational database
+    -Document:Equivalent to Row
+    -Field:Equivalent to Column
+
+  ## Tools used in MONGO DB
+    -Mongo DB compass(locally)
+    -MongoDB Atlas(Remote)
+
+  ## Mongo DB Commands
+    -show dbs->show list of databases
+
+
+

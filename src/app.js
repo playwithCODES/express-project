@@ -1,9 +1,18 @@
 import express from "express";
+import bodyParser from "body-parser";
 import fs from "fs";
 import config from "./config/config.js";
 import productRouter from "./routes/product.Route.js";
-import { version } from "os";
+import connectDB from "./config/database.js";
+
+
+
+
 const app = express();
+
+connectDB();
+
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.json({

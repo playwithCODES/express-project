@@ -11,7 +11,8 @@ const config={
         admin:{
             enabled:parseInt( process.env.FEATURE_ADMIN_ENABLED) ||false
         }
-    }
+    },
+    mongodbUrl:process.env.MONGODB_URL || ""
 }
 
 export default config;
