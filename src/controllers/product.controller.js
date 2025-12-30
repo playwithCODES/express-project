@@ -4,32 +4,65 @@ import { get } from "http";
 
 
 
-const getProducts=(req,res)=>{
-    const query=req.query;
-    const data=productService.getProducts(query);  
+const getProducts = async (req, res) => {
+  try {
+    const data = await productService.getProducts(req.query);
     res.json(data);
-} ;
-
-const getProductById=(req,res)=>{
-    // console.log(req.params);
-    const id=req.params.id;
-
-    const data=productService.getProductById(id);
-
-    if(!data)return res.status(404).send("Product not found");
-    res.json(data);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-const createProduct=(req,res)=>{
-    //create data
-    console.log(req.body);
+const getProductById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = await productService.getProductById(id);
+   
+    res.json(data);
+  } catch (error) {
+    res.status(error.status || 404).json({ message: error.message });
+  }
+};
 
-    productService.createProduct(req.body);
 
-    res.status(201).send("Create product api");
+const createProduct=async(req,res)=>{
+  
+    try{
+
+        const createdProduct= await productService.createProduct(req.body);
+          res.status(201).send(createdProduct);
+    }
+    catch(error){
+        return res.status(400).send(error?.message);
+    }
 }
+
+const deleteProduct=async(req,res)=>{  
+    try{
+        const deleted= await productService.deleteProduct(req.params.id);
+          res.json({message:"Product deleted successfully", id:req.params.id});
+          if (!deleted) return res.status(400).json({ message: "Invalid product id" });
+    }
+    catch(error){
+        return res.status(400).send(error?.message);
+    }
+}
+const updateProduct=async(req,res)=>{  
+    try{
+
+        const updated= await productService.updateProduct(req.params.id, req.body);
+        if (!updated) return res.status(400).json({ message: "Invalid product id" });
+          res.status(201).json(updated);
+    }
+    catch(error){
+        return res.status(400).send(error?.message);
+    }
+}
+
 export default {
     getProducts,
     getProductById,
-    createProduct
+    createProduct,
+    deleteProduct,
+    updateProduct
     };

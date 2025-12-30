@@ -1,33 +1,38 @@
-import fs from "fs";
-const products=fs.readFileSync('data/products.json','utf-8');
+import mongoose from "mongoose";
+import Product from "../models/Product.js";
 
-const getProducts=(query)=>{
-    const brand=query.brand ?? "";
-    const data=JSON.parse(products);
-
-    return data.filter((item)=>item.brand==brand);
-   
-    // return JSON.parse(products);
+const getProducts = async () => {
+  return await Product.find();
 };
 
-const getProductById=(id)=>{ 
-    const products=fs.readFileSync('data/products.json','utf-8');
-    const data=JSON.parse(products );
-    return data.find((item)=>item.id===parseInt(id));
+const getProductById = async (id) => {
+  if (!mongoose.Types.ObjectId.isValid(id)) return null;
+  return await Product.findById(id);
 };
 
-const createProduct=(data)=>{
-const productItems=JSON.parse(products);
-productItems.push(data);
-fs.writeFileSync('data/newProducts.json',JSON.stringify(productItems));
+const createProduct = async (data) => {
+  return await Product.create(data);
+};
 
+const deleteProduct = async (id) => {
+    await getProductById(id);
+  if (!mongoose.Types.ObjectId.isValid(id)) return null;
+  return await Product.findByIdAndDelete(id);
+};
 
-// console.log(data);
+const updateProduct = async (id, data) => {
+  if (!mongoose.Types.ObjectId.isValid(id)) return null;
 
-}
+  return await Product.findByIdAndUpdate(id, data, {
+    new: true,            // ✅ updated data return
+    runValidators: true,  // ✅ schema validators run
+  });
+};
 
 export default {
-    getProducts,
-    getProductById,
-    createProduct
+  getProducts,
+  getProductById,
+  createProduct,
+  deleteProduct,
+  updateProduct,
 };

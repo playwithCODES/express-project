@@ -11,12 +11,17 @@ router.get("/", productController.getProducts);
 router.get("/:id", productController.getProductById);
 
 
-// router.get("/two", (req,res)=>{
-//     res.json(["Iphone 14 pro max","Samsung s23 ultra"]);
-// });
+
 
 
 //POST/api/products
 router.post("/",productController.createProduct);
+
+//DELETE /api/products/:id
+router.delete("/:id",productController.deleteProduct);
+
+//PUT /api/products/:id
+router.put("/:id",productController.updateProduct);
+
 
 export default router;
