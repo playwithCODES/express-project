@@ -3,26 +3,27 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    require: [true, "User name is required"],  // Changed from require to required
+    required: [true, "User name is required"],  // Corrected from require to required
     minLength: [2, "user name can not be less than 2 characters"],
   },
-  email: {
-    type: String,
-    require: [true, "Email is required "],  // Changed from require to required
-    unique: true,
-    trim: true,
-    lowercase: true,
-    validate: {
-      validator: (value) => {
-        const emailRegex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
-        return emailRegex.test(value);
-      },
-      message: "Invalid email address",  // Fixed spelling of 'Invalid'
+ email: {
+  type: String,
+  required: [true, "Email is required"],
+  unique: true,  
+  trim: true,
+  lowercase: true,
+  validate: {
+    validator: (value) => {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      return emailRegex.test(value);
     },
+    message: "Invalid email address",
   },
+},
+
   password: {
     type: String,
-    require: [true, "Password is required"],  // Changed from require to required
+    required: [true, "Password is required"],  // Corrected from require to required
     minLength: [6, "Password must be at least 6 characters long"],
   },
   roles: {
@@ -32,18 +33,18 @@ const userSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    require: [true, "Phone Number is required"],  // Changed from require to required
+    required: [true, "Phone Number is required"],  // Corrected from require to required
     minLength: [6, "Invalid Phone number"],
     maxLength: [13, "Invalid Phone number"],
   },
   address: {
     city: {
       type: String,
-      require: [true, "Address City is required"],  // Changed from require to required
+      required: [true, "Address City is required"],  // Corrected from require to required
     },
     province: {
       type: String,
-      require: [true, "Address Province is required"],  // Changed from require to required
+      required: [true, "Address Province is required"],  // Corrected from require to required
     },
     street: String,
     country: {

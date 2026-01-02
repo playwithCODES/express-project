@@ -37,11 +37,35 @@
     -Field:Equivalent to Column
 
   ## Tools used in MONGO DB
-    -Mongo DB compass(locally)
-    -MongoDB Atlas(Remote)
+   - Mongo DB compass(locally)
+   - MongoDB Atlas(Remote)
 
   ## Mongo DB Commands
     -show dbs->show list of databases
+
+
+  ## Encryption
+   - Encryption:Converting readable text to cipher text
+   - for ex.:hello =>hjgiughiluhiuhiuuij
+
+   - Decryption: Converting cipher text to readable form   
+   - for ex.:hjgiughiluhiuhiuuij=>hello
+
+
+   ### Types
+   - Symmetric:Same key is used for encryption and decryption 
+   - Asymmetric: Different keys are used in encrytpion and decryption , public key/ private key
+
+   ## Hashing
+   - One way encryption
+   - convert readable text to cipher but not back to readable
+   - hashing of a text always return same cipher
+   
+
+   ## Salt
+   - Adding random characters in hash value 
+
+
 
 
 
