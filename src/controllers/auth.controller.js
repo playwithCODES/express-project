@@ -1,8 +1,16 @@
 import authService from "../services/auth.service.js";
 
-const login = (req, res) => {
-  authService.login();
-  res.send("login");
+
+export const login = async (req, res) => {
+   try {
+    const data = await authService.login(req.body);
+
+    res.send(data);
+
+  } catch (error) {
+
+    res.status(error.status|| 400).send(error.message);
+  }
 };
 
 const register = async (req, res) => {
