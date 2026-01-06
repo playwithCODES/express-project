@@ -1,11 +1,14 @@
 import authService from "../services/auth.service.js";
+import { createJWT } from "../utils/jwt.js";
 
 
 export const login = async (req, res) => {
    try {
     const data = await authService.login(req.body);
+    const token=createJWT(data);
+    res.cookie("authToken", token,{maxAge:86400*1000});
 
-    res.send(data);
+    res.json(data);
 
   } catch (error) {
 
@@ -17,7 +20,7 @@ const register = async (req, res) => {
     
   try {
     const data = await authService.register(req.body);
-
+    const token=createJWT(data);
     res.send(data);
 
   } catch (error) {

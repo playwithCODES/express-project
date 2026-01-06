@@ -66,6 +66,45 @@
    - Adding random characters in hash value 
 
 
+  ## Authentication & Authorization 
+  - Authentication:Who you are? Logged In user
+  - Authorization: What you can do ? User role
+
+  ## JWT- JSON WEB TOKEN
+  - self verified token
+  - used for auth
+  - Tamper proof
+
+  ## JWT Structure
+  - Header
+  - Payload
+  - Signature
+
+  ## JWT create and verify
+
+  - jwt.sign(data,"signature);
+  - jwt.verify(token, afule pathauney secret)
 
 
 
+  ## Storage
+  1. Cookie Storage
+     - Size:4KB
+     - Expiry: Cookie expiry
+     - Storage: Server & Browser
+  2. Local Storage
+     - Size: 5MB
+     - Storage: Only Browser
+     - Expiry : Never
+  3. Session Storage
+    - Size:5MB
+    - Storage: Only Browser
+    - Expiry: On tab close
+
+   ## Auth Process
+   1. Login/Register success
+   2. Generate token(JWT)
+   3. Store Token
+   4. Append Token in every request to handle auth
+   5. verify the user and authenticate/authorize user
+   

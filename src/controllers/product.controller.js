@@ -5,6 +5,9 @@ import { get } from "http";
 
 
 const getProducts = async (req, res) => {
+    console.log(req);
+    const cookie=req.headers.cookie;
+    console.log(cookie);
   try {
     const data = await productService.getProducts(req.query);
     res.json(data);
