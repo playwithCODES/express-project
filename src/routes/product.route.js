@@ -1,5 +1,6 @@
 import express from 'express';
 import productController from '../controllers/product.Controller.js'; 
+import auth from '../middlewares/auth.js';
 
 const router = express.Router();
 
@@ -15,7 +16,7 @@ router.get("/:id", productController.getProductById);
 
 
 //POST/api/products
-router.post("/",productController.createProduct);
+router.post("/",auth,productController.createProduct);
 
 //DELETE /api/products/:id
 router.delete("/:id",productController.deleteProduct);

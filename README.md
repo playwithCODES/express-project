@@ -107,4 +107,13 @@
    3. Store Token
    4. Append Token in every request to handle auth
    5. verify the user and authenticate/authorize user
-   
+
+   ## Middleware 
+   - Function that lies between request and response
+  
+   Browser--------- Request --------> Server
+   Middleware
+   Server---------- Response -------> Browser
+
+    - Function that has the access of both request and response object
+    - It has additional functionality to go to next middleware call
