@@ -1,20 +1,19 @@
-import { verifyJWT } from "../utils/jwt";
+import { verifyJWT } from "../utils/jwt.js";
 
-const auth=async (req,res,next)=>{
-    const cookie=req.headers.cookie;
-    if(!cookie)return res.status(401).send("User not authenticated");
-    const token=cookie.split("=")[1];
-    if(!token)return res.status(401).send("User not authenticated");
+const auth = async (req, res, next) => {
+  try {
+    const token = req.cookies?.authToken; // ✅ correct cookie name
 
-try {
-    const result = await verifyJWT(token);
-    req.user=data
-     next();
-} catch (error) {
-    res.status(401).send("Invalid token");
-}
+    if (!token) {
+      return res.status(401).send("User not authenticated");
+    }
 
-   
-
+    const decoded = await verifyJWT(token); // ✅ verify
+    req.user = decoded; // ✅ fix
+    next();
+  } catch (error) {
+    return res.status(401).send("Invalid token");
+  }
 };
-export default auth; 
+
+export default auth;

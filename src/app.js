@@ -8,6 +8,7 @@ import authRoute from "./routes/auth.route.js";
 import connectDB from "./config/database.js";
 import logger from "./middlewares/logger.js";
 import auth from "./middlewares/auth.js";
+import cookieParser from "cookie-parser";
 
 
 
@@ -17,8 +18,9 @@ const app = express();
 connectDB();
 
 app.use(bodyParser.json());
-app.use(logger);
-app.use(auth);
+app.use(cookieParser());  
+// app.use(logger);
+
 
 app.get("/", (req, res) => {
   res.json({
@@ -29,27 +31,11 @@ app.get("/", (req, res) => {
 });
 
 
-// app.get("/test",
-//   (req,res, next)=>{
-//   console.log("This is the first middleware");
-//   next();
-//   },
-// (req, res, next)=>{
-//   console.log("This is the second middleware");
-//   next();
-// },
-// (req,res,next)=>{
-//   console.log("This is the third middleware");
-//   // next();
-// },
-// (req, res)=>{
-//   res.send("test");
-// }
-// )
-
+app.use("/api/auth",authRoute);
+app.use(auth);
 app.use("/api/products",productRouter);
 app.use("/api/users",userRoute);
-app.use("/api/auth",authRoute);
+
 
 app.listen(config.port, () => {
   console.log(`Server running on port: ${config.port}`);

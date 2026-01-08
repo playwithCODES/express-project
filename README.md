@@ -117,3 +117,12 @@
 
     - Function that has the access of both request and response object
     - It has additional functionality to go to next middleware call
+
+    ## Usage
+    - Logging
+    - Authentication & Authorization
+    - Request and response object modification
+    - Error handling, Data validation
+
+    ## Authorization
+    - RBAC(Role Based Access Control)
