@@ -126,3 +126,7 @@
 
     ## Authorization
     - RBAC(Role Based Access Control)
+
+    1.USER-> Purchase
+    2.MERCHANT->Product create/update/delete
+    3.ADMIN->Product management, user management, order management

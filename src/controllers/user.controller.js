@@ -9,8 +9,9 @@ const createUser=async (req,res)=>{
     }
 }
 const getUsers=async (req,res)=>{
+    console.log(req.user);
     try{
-        const data=await userService.getUsers(req.body); 
+        const data=await userService.getUsers(); 
         res.status(201).json(data);
     }
     catch(error){

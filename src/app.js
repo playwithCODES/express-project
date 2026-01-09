@@ -18,8 +18,7 @@ const app = express();
 connectDB();
 
 app.use(bodyParser.json());
-app.use(cookieParser());  
-// app.use(logger);
+app.use(logger);
 
 
 app.get("/", (req, res) => {
@@ -31,10 +30,10 @@ app.get("/", (req, res) => {
 });
 
 
-app.use("/api/auth",authRoute);
-app.use(auth);
+// app.use(auth);
 app.use("/api/products",productRouter);
-app.use("/api/users",userRoute);
+app.use("/api/users",auth,userRoute);
+app.use("/api/auth",authRoute);
 
 
 app.listen(config.port, () => {

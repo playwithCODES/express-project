@@ -22,10 +22,10 @@ const getProductById = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  
+
+
   try {
-    const result=await verifyJWT(token);
-    console.log(result);
+   
     const createdProduct = await productService.createProduct(req.body);
     res.status(201).send(createdProduct);
   } catch (error) {
