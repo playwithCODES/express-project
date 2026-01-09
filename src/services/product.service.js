@@ -24,8 +24,8 @@ const updateProduct = async (id, data) => {
   if (!mongoose.Types.ObjectId.isValid(id)) return null;
 
   return await Product.findByIdAndUpdate(id, data, {
-    new: true,            // ✅ updated data return
-    runValidators: true,  // ✅ schema validators run
+    new: true,           
+    runValidators: true, 
   });
 };
 
