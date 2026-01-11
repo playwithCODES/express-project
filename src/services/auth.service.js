@@ -38,6 +38,13 @@ const register = async (data) => {
       status: 409,
       message: "User Already Exists ",
     };
+
+
+    if(!data.password)throw{
+      status:400,
+        message:"Password is required"
+    }
+
   const salt = bcrypt.genSaltSync(10);
   const hashedPassword = bcrypt.hashSync(data.password, salt);
   const createdUser= await User.create({
