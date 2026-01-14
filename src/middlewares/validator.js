@@ -1,4 +1,4 @@
-import { ZodError } from "zod";
+import z, { ZodError } from "zod";
 
 const validate=(schema)=>(req, res, next)=>{
     try {
@@ -6,10 +6,9 @@ const validate=(schema)=>(req, res, next)=>{
   next();
 } catch(error){
   if(error instanceof ZodError){
-    console.log(error);
-    res.status(400).json(JSON.parse(error.message));
-    error.issues; 
-    
+ const formattedError=z.treeifyError(error);
+ console.log(formattedError);
+    return res.status(400).json({errors:formattedError});
   }
   next(error);
 }
