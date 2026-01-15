@@ -9,7 +9,7 @@ import connectDB from "./config/database.js";
 import logger from "./middlewares/logger.js";
 import auth from "./middlewares/auth.js";
 import cookieParser from "cookie-parser";
-import { ROLE_ADMIN } from "./constants/roles.js";
+import { ROLE_ADMIN, ROLE_MERCHANT } from "./constants/roles.js";
 import roleBasedAuth from "./middlewares/roleBasedAuth.js";
 
 
@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
 
 // app.use(auth);
 app.use("/api/products",productRouter);
-app.use("/api/users",auth,roleBasedAuth(ROLE_ADMIN),userRoute);
+app.use("/api/users",auth,roleBasedAuth(ROLE_MERCHANT),userRoute);
 app.use("/api/auth",authRoute);
 
 
