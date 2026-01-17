@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import Product from "../models/Product.js";
 
 const getProducts = async () => {
+  
   return await Product.find();
 };
 

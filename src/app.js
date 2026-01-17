@@ -12,16 +12,12 @@ import cookieParser from "cookie-parser";
 import { ROLE_ADMIN, ROLE_MERCHANT } from "./constants/roles.js";
 import roleBasedAuth from "./middlewares/roleBasedAuth.js";
 
-
-
-
 const app = express();
 
 connectDB();
 
 app.use(bodyParser.json());
 app.use(logger);
-
 
 app.get("/", (req, res) => {
   res.json({
@@ -31,12 +27,10 @@ app.get("/", (req, res) => {
   });
 });
 
-
 // app.use(auth);
-app.use("/api/products",productRouter);
-app.use("/api/users",auth,roleBasedAuth(ROLE_MERCHANT),userRoute);
-app.use("/api/auth",authRoute);
-
+app.use("/api/products", productRouter);
+app.use("/api/users", auth, roleBasedAuth(ROLE_ADMIN), userRoute);
+app.use("/api/auth", authRoute);
 
 app.listen(config.port, () => {
   console.log(`Server running on port: ${config.port}`);

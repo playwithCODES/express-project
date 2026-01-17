@@ -130,3 +130,16 @@
     1.USER-> Purchase
     2.MERCHANT->Product create/update/delete
     3.ADMIN->Product management, user management, order management
+
+ ## NODEJS Code Semantics
+
+ - Always format your code
+ - Use proper spacing and line spacing
+ - Always use camelCase while naming your files and folders in JS("helloWorld")
+ - Always use camelCase while naming your functions and variables in JS(createUser)
+ - File, variable must be noun
+ - Functions & methods must be a verb
+ - Also check singular and plural case
+ - Avoid using number while naming variable, function, file(test1 ❌  testOne✅)
+ - add a line above return statement
+ - If you have a list of codes , arrange them in ASC order
