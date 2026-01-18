@@ -143,3 +143,11 @@
  - Avoid using number while naming variable, function, file(test1 ❌  testOne✅)
  - add a line above return statement
  - If you have a list of codes , arrange them in ASC order
+
+
+ ## Entity
+ - Model
+ - Service
+ - Controller
+ - Routes
+ - Validation Schema(libs)

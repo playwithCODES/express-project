@@ -4,7 +4,7 @@ async function connectDB(){
     try {
        await mongoose.connect(config.mongodbUrl);
    
-      console.log("Datebase Connection is successful");
+      console.log("Database Connection is successful");
     } catch (error) {
          console.log("Database Connection failed",error);
          process.exit(1);
