@@ -151,3 +151,14 @@
  - Controller
  - Routes
  - Validation Schema(libs)
+
+ ## Product Orders
+ - user (Customer)
+ - userItems
+    - products
+    - quantity
+ - status: pending, confirmed, shipped, delivered, cancelled
+ - shippingAddress
+ - totalPrice
+ - orderNumber
+
