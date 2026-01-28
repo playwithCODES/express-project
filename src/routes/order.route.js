@@ -3,14 +3,36 @@ import orderController from "../controllers/order.controller.js";
 import auth from "../middlewares/auth.js";
 import roleBasedAuth from "../middlewares/roleBasedAuth.js";
 import { ROLE_USER } from "../constants/roles.js";
+import { ROLE_ADMIN } from "../constants/roles.js";
 import validate from "../middlewares/validator.js";
 import { orderSchema } from "../libs/schemas/order.js";
 
 const router = express.Router();
+
+router.get("/",
+     auth,
+     roleBasedAuth(ROLE_ADMIN),
+     orderController.getOrders);
+
+     router.get("/user", 
+      auth,
+      roleBasedAuth(ROLE_USER),
+      orderController.getOrdersBYUser);
+
 router.post('/',
      auth,
      roleBasedAuth(ROLE_USER),
      validate(orderSchema),
       orderController.createOrder);
+
+      router.put('/:id/cancel',
+     auth,
+
+      orderController.cancelOrder);
+
+      router.delete('/:id',
+     auth,
+     roleBasedAuth(ROLE_ADMIN),
+      orderController.deleteOrder);
 
 export default router;

@@ -14,19 +14,6 @@ const orderSchema = z.object({
     })
   ),
 
-  // totalPrice:z.number({error:(value)=>{
-  //     value===undefined
-  //     ? "Total Price is required."
-  //     : "Total Price must be a number.";
-  // }}).min(1),
-
-  //     quantity:z.number({error:(value)=>{
-  //         value===undefined
-  //         ? "Quantity is required."
-  //         : "Quantity must be a number.";
-  //     }}).min(1)
-  // })).min(1,{message:"At least one order item is required."}),
-
   totalPrice: z.number({ error: "Total Price is required." }).min(0),
 
   shippingAddress: addressSchema,
