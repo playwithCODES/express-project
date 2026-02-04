@@ -18,6 +18,25 @@ try {
 }
 }
 
+const getOrderById=async(req, res)=>{
+try {
+    const data=await orderService.getOrderById(req.params.id);
+    res.json(data);
+} catch (error) {
+    res.status(error.status || 400).send(error?.message);
+}
+}
+
+const updateOrderStatus=async(req, res)=>{
+try {
+    const data=await orderService.updateOrderStatus(req.params.id, req.body?.status);
+    res.json(data);
+} catch (error) {
+    res.status(error.status || 400).send(error?.message);
+}
+}
+
+
 
 
 const createOrder=async(req, res)=>{
@@ -48,4 +67,4 @@ try {
 }
 
 
-export default {createOrder, getOrders, getOrdersBYUser, cancelOrder, deleteOrder};
+export default {createOrder, updateOrderStatus, getOrders, getOrdersBYUser, cancelOrder, deleteOrder, getOrderById};

@@ -35,6 +35,10 @@ const getOrderById=async(id)=>{
     return order;
 }
 
+const updateOrderStatus=async(id, status)=>{
+    return await Order.findByIdAndUpdate(id, {status}, {new:true});
+}
+
 const cancelOrder=async(id, user)=>{
     const order=await getOrderById(id);
     if(!user.roles.includes("admin") && order.user._id !=user._id){
@@ -51,4 +55,8 @@ const deleteOrder=async(id)=>{
     return await Order.findByIdAndDelete(id);
 }   
 
-export default { createOrder, getOrders, getOrdersBYUser,deleteOrder, cancelOrder, getOrderById };
+//confirmOrder-payment
+
+//getOrdersByMerchant
+
+export default { createOrder, getOrders, getOrdersBYUser,deleteOrder, cancelOrder, getOrderById, updateOrderStatus };

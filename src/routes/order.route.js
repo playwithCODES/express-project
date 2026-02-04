@@ -5,34 +5,49 @@ import roleBasedAuth from "../middlewares/roleBasedAuth.js";
 import { ROLE_USER } from "../constants/roles.js";
 import { ROLE_ADMIN } from "../constants/roles.js";
 import validate from "../middlewares/validator.js";
-import { orderSchema } from "../libs/schemas/order.js";
+import { orderSchema, orderStatusSchema } from "../libs/schemas/order.js";
 
 const router = express.Router();
 
-router.get("/",
-     auth,
-     roleBasedAuth(ROLE_ADMIN),
-     orderController.getOrders);
+router.get("/", auth, roleBasedAuth(ROLE_ADMIN), orderController.getOrders);
 
-     router.get("/user", 
-      auth,
-      roleBasedAuth(ROLE_USER),
-      orderController.getOrdersBYUser);
+router.get(
+  "/user",
+  auth,
+  roleBasedAuth(ROLE_USER),
+  orderController.getOrdersBYUser,
+);
 
-router.post('/',
-     auth,
-     roleBasedAuth(ROLE_USER),
-     validate(orderSchema),
-      orderController.createOrder);
+router.post(
+  "/",
+  auth,
+  roleBasedAuth(ROLE_USER),
+  validate(orderSchema),
+  orderController.createOrder,
+);
 
-      router.put('/:id/cancel',
-     auth,
+router.put("/:id/cancel", auth, orderController.cancelOrder);
 
-      orderController.cancelOrder);
+router.delete(
+  "/:id",
+  auth,
+  roleBasedAuth(ROLE_ADMIN),
+  orderController.deleteOrder,
+);
 
-      router.delete('/:id',
-     auth,
-     roleBasedAuth(ROLE_ADMIN),
-      orderController.deleteOrder);
+router.get(
+  "/:id",
+  auth,
+  roleBasedAuth(ROLE_USER),
+  orderController.getOrderById,
+);
+
+router.put(
+  "/:id/status",
+  auth,
+  roleBasedAuth(ROLE_ADMIN),
+  validate(orderStatusSchema),
+  orderController.updateOrderStatus,
+);
 
 export default router;
