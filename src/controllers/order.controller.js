@@ -66,5 +66,42 @@ try {
 }
 }
 
+const orderPaymentViaKhalti=async(req, res)=>{
+try {
+    const data=await orderService.orderPaymentViaKhalti(req.params.id);
+    res.json(data);
+} catch (error) {
+    res.status(error.status || 400).send(error?.message);
+}
+}
 
-export default {createOrder, updateOrderStatus, getOrders, getOrdersBYUser, cancelOrder, deleteOrder, getOrderById};
+const orderPaymentViaCash=async(req, res)=>{
+try {
+    const data=await orderService.orderPaymentViaCash(req.params.id);
+    res.json(data);
+} catch (error) {
+    res.status(error.status || 400).send(error?.message);
+}
+}
+
+
+
+const confirmOrderPayment=async(req, res)=>{
+    if(!req.body.status){
+        return res.status(400).send("Payment status is required");
+try {
+    const data=await orderService.confirmOrderPayment(req.params.id, req.body.status);
+    res.json(data);
+} catch (error) {
+    res.status(error.status || 400).send(error?.message);
+}
+}
+}
+
+
+
+
+
+
+
+export default {createOrder, updateOrderStatus, getOrders, getOrdersBYUser, cancelOrder, deleteOrder, getOrderById, orderPaymentViaKhalti, confirmOrderPayment, orderPaymentViaCash};

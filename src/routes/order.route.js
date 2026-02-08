@@ -50,4 +50,28 @@ router.put(
   orderController.updateOrderStatus,
 );
 
+router.post(
+  "/:id/payment/khalti",
+  auth,
+  roleBasedAuth(ROLE_USER),
+  orderController.orderPaymentViaKhalti,
+);
+
+router.put(
+  "/:id/confirm-payment",
+  auth,
+  roleBasedAuth(ROLE_USER),
+  orderController.confirmOrderPayment,
+);
+
+
+router.post(  "/:id/payment/cash",
+  auth,
+  roleBasedAuth(ROLE_USER),
+  orderController.orderPaymentViaCash,
+);
+
+
+
+
 export default router;
