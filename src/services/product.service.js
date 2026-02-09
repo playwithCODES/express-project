@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import Product from "../models/Product.js";
 import { $ZodAny } from "zod/v4/core";
+import uploadFile from "../utils/fileUploader.js";
 
 const getProducts = async (query) => {
   console.log(query);
@@ -25,8 +26,10 @@ const getProductById = async (id) => {
   return await Product.findById(id);
 };
 
-const createProduct = async (data, userId) => {
-  return await Product.create({ ...data, createdBy: userId });
+const createProduct = async (data, files, userId) => {
+  const uploadedFiles=await uploadFile(files);
+  const imageUrls=uploadedFiles.map((item)=>item.url);
+  return await Product.create({ ...data, imageUrls, createdBy: userId });
 };
 
 const deleteProduct = async (id) => {

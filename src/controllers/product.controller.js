@@ -26,7 +26,7 @@ const createProduct = async (req, res) => {
 
   try {
    
-    const createdProduct = await productService.createProduct(req.body, req.user._id);
+    const createdProduct = await productService.createProduct(req.body,req.files,  req.user._id);
     res.status(201).send(createdProduct);
   } catch (error) {
     return res.status(400).send(error?.message);

@@ -17,8 +17,15 @@ const config = {
     khalti:{
         apiUrl: process.env.KHALTI_API_URL || "",
         secret: process.env.KHALTI_SECRET_KEY || ""
-    }
+    },
+    cloudinary:{
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME || "",
+        apiKey: process.env.CLOUDINARY_API_KEY || "",
+        apiSecret: process.env.CLOUDINARY_API_SECRET || ""
+    }   
+
 }
+
 
 // Log the secret key for debugging
 console.log("JWT_SECRET: ", config.jwtSecret);

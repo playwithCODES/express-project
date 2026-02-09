@@ -162,3 +162,12 @@
  - totalPrice
  - orderNumber
 
+ ## File Upload using Cloudinary
+
+ 1. File data->Send as form data
+ 2. USe multer package to handle form data
+ 3. Upload to cloudinary
+ 4. Receive the file URL from uploaded file
+ 5. Store the URL in database
+
+
