@@ -38,10 +38,19 @@ const deleteProduct = async (id) => {
   return await Product.findByIdAndDelete(id);
 };
 
-const updateProduct = async (id, data) => {
-  if (!mongoose.Types.ObjectId.isValid(id)) return null;
+const updateProduct = async (id, data, files) => {
+  // if (!mongoose.Types.ObjectId.isValid(id)) return null;
+  await getProductById(id);
+  const updateData=data;
 
-  return await Product.findByIdAndUpdate(id, data, {
+  if(files && files.length>0){
+
+    const uploadedFiles=await uploadFile(files);
+    updateData.imageUrls=uploadedFiles.map((item)=>item.url);
+  }
+
+
+  return await Product.findByIdAndUpdate(id, updateData, {
     new: true,
     runValidators: true,
   });

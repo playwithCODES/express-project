@@ -45,7 +45,7 @@ const deleteProduct = async (req, res) => {
 };
 const updateProduct = async (req, res) => {
   try {
-    const updated = await productService.updateProduct(req.params.id, req.body);
+    const updated = await productService.updateProduct(req.params.id,req.body, req.files);
     if (!updated)
       return res.status(400).json({ message: "Invalid product id" });
     res.status(201).json(updated);
