@@ -24,6 +24,5 @@ status:{
   },
 
 });
-
 const  model= mongoose.model("Payment", paymentSchema);
 export default model;

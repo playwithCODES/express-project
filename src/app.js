@@ -36,17 +36,10 @@ app.get("/", (req, res) => {
 // app.use(auth);
 
 
-app.post("/api/uploads", upload.array("images", 5),async (req, res)=>{
-  const files=req.files;
-
-  const result=await uploadFile(files);
-
-  res.json(result);
-});
 
 
 app.use("/api/products", upload.array("images", 5),productRouter);
-app.use("/api/users", auth, roleBasedAuth(ROLE_USER), userRoute);
+app.use("/api/users", auth,upload.single("image"), userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/orders", orderRoute);
 

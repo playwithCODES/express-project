@@ -170,4 +170,11 @@
  4. Receive the file URL from uploaded file
  5. Store the URL in database
 
+ ## Debugging
+ 1. Check from root app.js file
+ 2. Check in the route files. for e.g. `product.route.js`
+ 3. Check in the controller file for e.g. `product.controller.js`
+ 4. Check in the service file. for e.g. `product.service.js`
+ 5. Check imported files and functions
+
 
