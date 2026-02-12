@@ -21,9 +21,6 @@
 
 
 
-
-
-
   ## JSON
   1.JSON data lai Javascript bujhney banaunu xa vaney tyo bela JSON.parse() garnu parxa (JSON lai Javascript ma convert garnu xa vaney)
   2.Javascript object ma xa teslai JSON ma convert garnu xa vaney JSON.stringify(Javascipt lai JSON ma convert garnu xa vaney)
@@ -176,5 +173,17 @@
  3. Check in the controller file for e.g. `product.controller.js`
  4. Check in the service file. for e.g. `product.service.js`
  5. Check imported files and functions
+
+ ## Forgot Password/Reset Password
+ 1. User requests for Forget Password
+ 2. User inputs the email address
+ 3. Using the email address, find the user and create a reset password link & token
+ 4. Send the reset password link to that email
+
+ 5. User click on the reset password link from the received email
+ 6. User inputs the new password , along with the token(reset password link)
+ 7. Verify the user & token
+ 8. Update the password
+
 
 

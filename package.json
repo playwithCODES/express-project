@@ -24,6 +24,7 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.0.2",
     "multer": "^2.0.2",
+    "resend": "^6.9.2",
     "zod": "^4.3.5"
   },
   "devDependencies": {
