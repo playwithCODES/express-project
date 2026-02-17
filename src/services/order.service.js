@@ -43,7 +43,7 @@ const updateOrderStatus=async(id, status)=>{
 
 const cancelOrder=async(id, user)=>{
     const order=await getOrderById(id);
-    if(!user.roles.includes("admin") && order.user._id !=user._id){
+    if(!user.roles.includes(ROLE_ADMIN) && order.user._id !=user._id){
         throw{
             status:403,
             message:"Access Denied"

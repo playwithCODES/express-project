@@ -18,9 +18,10 @@ const UserSchema = z.object({
     roles: z.array(z.enum([ROLE_ADMIN, ROLE_MERCHANT,ROLE_USER])).optional(),
     profileImageUrl:z.string().optional(),
     isActive:z.boolean().optional()
-
-
-
 });
 
-export {UserSchema};
+const UpdateUserSchema = z.object({
+    roles: z.array(z.enum([ROLE_MERCHANT,ROLE_USER]))
+})
+
+export {UserSchema, UpdateUserSchema};

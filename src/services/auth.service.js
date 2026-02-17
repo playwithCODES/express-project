@@ -18,6 +18,12 @@ const login = async (data) => {
       message: "Invalid Credentials",
     };
 
+    if(!user.isActive)
+      throw {
+        status: 400,
+        message: "User deactivated. Please contact support.",
+      };
+
   const isPasswordMatch = bcrypt.compareSync(data.password, user.password);
   if (!isPasswordMatch)
     throw {

@@ -34,7 +34,7 @@ const updateProfileImage=async (req,res)=>{
 const getUserById=async (req,res)=>{
     console.log(req.user);
     try{
-        const data=await userService.getUserById(req.params._id); 
+        const data=await userService.getUserById(req.params.id); 
         res.status(201).json(data);
     }
     catch(error){
@@ -44,17 +44,41 @@ const getUserById=async (req,res)=>{
 const updateUser=async (req,res)=>{
     console.log(req.user);
     try{
-        const data=await userService.updateUser(req.params._id, req.body); 
+        const data=await userService.updateUser(req.params.id, req.body, req.user); 
         res.status(201).json(data);
     }
     catch(error){
-        res.status(400).send(error?.message);
+        res.status(error?.status || 400).send(error?.message);
     }
 }
+
+const updateUserRoles=async (req,res)=>{
+    console.log(req.user);
+    try{
+        const data=await userService.updateUserRoles(req.params.id, req.body.roles); 
+        res.status(201).json(data);
+    }
+    catch(error){
+        res.status(error?.status || 400).send(error?.message);
+    }
+}
+
+
 const deleteUser=async (req,res)=>{
     console.log(req.user);
     try{
-        const data=await userService.deleteUser(req.params._id); 
+        const data=await userService.deleteUser(req.params.id); 
+        res.status(201).json(data);
+    }
+    catch(error){
+        res.status(400).send(error?.message);
+    }
+}
+
+const getLoggedInUser=async (req,res)=>{
+    console.log(req.user);
+    try{
+        const data=await userService.getUserById(req.user._id); 
         res.status(201).json(data);
     }
     catch(error){
@@ -64,4 +88,7 @@ const deleteUser=async (req,res)=>{
 
 
 
-export default {createUser, getUsers, updateProfileImage, getUserById, updateUser, deleteUser};
+
+
+
+export default {createUser, getUsers, updateProfileImage, getUserById, updateUser, deleteUser, getLoggedInUser, updateUserRoles};
