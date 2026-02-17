@@ -17,5 +17,11 @@ router.post("/",
 
      router.patch("/profile-image", userController.updateProfileImage);
 
+     router.get("/:id", userController.getUserById);
+
+     router.put("/:id", userController.updateUser);
+
+     router.delete("/:id", userController.deleteUser);
+
 export default router;
  

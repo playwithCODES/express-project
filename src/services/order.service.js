@@ -122,4 +122,5 @@ const confirmOrderPayment=async(id, status)=>{
 
 //getOrdersByMerchant
 
+
 export default { createOrder, getOrders, getOrdersBYUser,deleteOrder, cancelOrder, getOrderById, updateOrderStatus , orderPaymentViaKhalti, confirmOrderPayment, orderPaymentViaCash};
