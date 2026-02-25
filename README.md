@@ -185,7 +185,11 @@
  7. Verify the user & token
  8. Update the password
 
- ## 
+ ## MongoDB Aggregation
+ - Performing operations in multiple documents(table)
+ - Filtering in multiple documents
+ - Data Formatting
+
 
 
 
