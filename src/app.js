@@ -43,8 +43,8 @@ app.use("/api/users", auth,upload.single("image"), userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/orders",auth, orderRoute);
 
-// app.listen(config.port, () => {
-//   console.log(`Server running on port: ${config.port}`);
-// });
+app.listen(config.port, () => {
+  console.log(`Server running on port: ${config.port}`);
+});
 
 export default app;
