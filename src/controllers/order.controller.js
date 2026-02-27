@@ -85,31 +85,29 @@ const orderPaymentViaCash = async (req, res) => {
 };
 
 const confirmOrderPayment = async (req, res) => {
-  if (!req.body.status) {
-    return res.status(400).send("Payment status is required");
-    try {
-      const data = await orderService.confirmOrderPayment(
-        req.params.id,
-        req.body.status,
-      );
-      res.json(data);
-    } catch (error) {
-      res.status(error.status || 400).send(error?.message);
+  try {
+    if (!req.body.status) {
+      return res.status(400).send("Payment status is required");
     }
+
+    const data = await orderService.confirmOrderPayment(
+      req.params.id,
+      req.body.status
+    );
+    res.json(data);
+  } catch (error) {
+    res.status(error.status || 400).send(error?.message);
   }
 };
 
+
+
 const getOrdersByMerchant = async (req, res) => {
-  if (!req.body.status) {
-    return res.status(400).send("Payment status is required");
-    try {
-      const data = await orderService.getOrdersByMerchant(
-        req.user._id
-      );
-      res.json(data);
-    } catch (error) {
-      res.status(error.status || 400).send(error?.message);
-    }
+  try {
+    const data = await orderService.getOrdersByMerchant(req.user._id);
+    return res.json(data);
+  } catch (error) {
+    return res.status(error.status || 400).send(error?.message);
   }
 };
 

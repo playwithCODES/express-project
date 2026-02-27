@@ -7,7 +7,7 @@ price:z.string({error:(value)=>{
     value===undefined
     ? "Product price is required."
     : "Product price must be a number.";
-}}).min(1).max(99999) ,
+}}).min(1).max(999999) ,
 stock:z.number().min(1).optional(),
 imageUrls:z.array(z.string()).optional()
 

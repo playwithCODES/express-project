@@ -189,6 +189,12 @@
  - Performing operations in multiple documents(table)
  - Filtering in multiple documents
  - Data Formatting
+ 1. $match=>Filtering
+ 2. $lookup=>LEFT JOINS
+ 3. $unwind=> INNER JOINS
+ 4. $project=>Data formatting
+ 5. $group=>complex grouped operations
+
 
 
 

@@ -7,6 +7,8 @@ import Payment from "../models/Payment.js";
 import crypto from "crypto";
 import { payViaKhalti } from "../utils/payment.js";
 import { get } from "http";
+import mongoose from "mongoose";
+import { totalmem } from "os";
 
 const getOrders = async () => {
   return await Order.find()
@@ -121,7 +123,43 @@ const confirmOrderPayment = async (id, status) => {
   // }
 };
 
-const getOrdersByMerchant = async (merchantId) => {};
+const getOrdersByMerchant = async (merchantId) => {
+  return await Order.aggregate([
+    {
+      $lookup: {
+        from: "products",
+        localField: "orderItems.product",
+        foreignField: "_id",
+        as: "orderedProducts",
+      },
+    },
+    {
+      $unwind: "$orderedProducts",
+    },
+    {
+      $match: {
+        "orderedProducts.createdBy": new mongoose.Types.ObjectId(merchantId),
+      },
+    },
+
+    {
+      $project: {
+        orderNumber: 1,
+        status: 1,
+        totalPrice: 1,
+        shippingAddress: 1,
+        payment: 1,
+        "orderedProducts.name": 1,
+        "orderedProducts.price": 1,
+        "orderedProducts.category": 1,
+        "orderedProducts.imageUrls": 1,
+        "orderedProducts.brand": 1,
+        user: 1,
+        "orderedProducts.quantity": 1,
+      },
+    },
+  ]);
+};
 
 //getOrdersByMerchant
 
