@@ -3,7 +3,7 @@ import multer from "multer";
 import bodyParser from "body-parser";
 import fs from "fs";
 import config from "./config/config.js";
-import productRouter from "./routes/product.Route.js";
+import productRouter from "./routes/product.route.js";
 import userRoute from "./routes/user.route.js";
 import authRoute from "./routes/auth.route.js";
 import orderRoute from "./routes/order.route.js";
@@ -46,3 +46,5 @@ app.use("/api/orders",auth, orderRoute);
 app.listen(config.port, () => {
   console.log(`Server running on port: ${config.port}`);
 });
+
+export default app;
