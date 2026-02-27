@@ -1,5 +1,5 @@
 import fs from "fs";
-import productService from "../services/product.Service.js";
+import productService from "../services/product.service.js";
 import { get } from "http";
 import { verifyJWT } from "../utils/jwt.js";
 
