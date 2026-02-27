@@ -1,5 +1,5 @@
 import express from 'express';
-import productController from '../controllers/product.Controller.js'; 
+import productController from '../controllers/product.controller.js'; 
 import auth from '../middlewares/auth.js';
 import roleBasedAuth from '../middlewares/roleBasedAuth.js';
 import { ROLE_ADMIN, ROLE_MERCHANT } from '../constants/roles.js';
