@@ -24,7 +24,8 @@ const config = {
         apiSecret: process.env.CLOUDINARY_API_SECRET || ""
     }  ,
     
-    emailApiKey: process.env.EMAIL_API_KEY || ""
+    emailApiKey: process.env.EMAIL_API_KEY || "",
+    geminiApiKey:process.env.GEMINI_API_KEY || ""
 
 }
 

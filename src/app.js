@@ -15,6 +15,7 @@ import cookieParser from "cookie-parser";
 import { ROLE_ADMIN, ROLE_MERCHANT, ROLE_USER } from "./constants/roles.js";
 import roleBasedAuth from "./middlewares/roleBasedAuth.js";
 import uploadFile from "./utils/fileUploader.js";
+import promptAI from "./utils/ai.js";
 
 const app = express();
 const upload = multer({storage: multer.memoryStorage()});
@@ -32,6 +33,11 @@ app.get("/", (req, res) => {
     version: config.version,
   });
 });
+
+app.post("/gemini", async(req,res)=>{
+  const data=await promptAI(req.body.message);
+  res.json(data);
+})
 
 // app.use(auth);
 

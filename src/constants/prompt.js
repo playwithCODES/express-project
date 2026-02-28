@@ -1,0 +1,1 @@
+export const PRODUCT_DESCRIPTION_PROMPT = "Create a detailed and SEO friendly product description for my e-commerce website. Follow these details: Name:%s, Brand:%s, Category:%s . Make the description engaging, highlighting benefits .Create the description in a markdown format. The description should be maximum of 500 characters.Ignore extra messages,don't use enter ascii(\n)";
