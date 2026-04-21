@@ -15,10 +15,7 @@ const productSchema = new mongoose.Schema({
     min: [1, "Price must be greater than 1"],
     max: [999999, "Price can not be greater than 999999"],
   },
-  // createdAt:{
-  //     type:Date,
-  //     default:Date.now()
-  // },
+
   stock: {
     type: Number,
     default: 1,
@@ -29,12 +26,18 @@ const productSchema = new mongoose.Schema({
     ref: "User",
     required: [true, "Created by user is required."],
   },
-
+    
+   
   description: {
     type: String,
     maxLength: [600, "Description can not be more than 600 characters."],
   },
-});
+},
+{
+  timestamps: true,
+}
+
+);
 
 const model = mongoose.model("Product", productSchema);
 

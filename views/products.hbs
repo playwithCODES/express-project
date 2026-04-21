@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="container mx-auto px-4 py-16">
+    <table class="w-full">
+        <thead>
+            <tr class="bg-gray-100">
+                <th class="border bg-gray-200 px-4 py-2">_id</th>
+                <th class="border bg-gray-200 px-4 py-2">Name</th>
+                <th class="border bg-gray-200 px-4 py-2">Category</th>
+                <th class="border bg-gray-200 px-4 py-2">Brand</th>
+                <th class="border bg-gray-200 px-4 py-2">Stock</th>
+                <th class="border bg-gray-200 px-4 py-2">Price</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+          {{#each products}}
+          <tr>
+            <td class="border bg-gray-200 px-4 py-2"><a href="/pages/products/{{_id}}" class="text-red-500 hover:underline">{{_id}}</a></td>
+            <td class="border bg-gray-200 px-4 py-2">{{name}}</td>
+            <td class="border bg-gray-200 px-4 py-2">{{category}}</td>
+            <td class="border bg-gray-200 px-4 py-2">{{brand}}</td>
+            <td class="border bg-gray-200 px-4 py-2">{{stock}}</td>
+            <td class="border bg-gray-200 px-4 py-2">{{price}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+    </table>   
+    </div>
+</body>
+</html>
