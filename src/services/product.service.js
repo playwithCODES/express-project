@@ -15,7 +15,9 @@ const getProducts = async (query) => {
 
   if (category) filters.category = category; //Exact Match
   if (brand) filters.brand = { $in: brand.split(",") }; //Match data from the list of items
-  if (name) filters.name = { regex: name, $options: "i" }; //Ilike match
+ if (name && name.trim() !== "") {
+  filters.name = { $regex: name, $options: "i" };
+} //Ilike match
   if (min) filters.price = { $gte: min };
   if (max) filters.price = { ...filters.price, $lte: max };
   if (createdBy) filters.createdBy = createdBy;
