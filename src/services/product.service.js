@@ -7,7 +7,7 @@ import { PRODUCT_DESCRIPTION_PROMPT } from "../constants/prompt.js";
 
 const getProducts = async (query) => {
   console.log(query);
-  const { category, brand, name, min, max, offset,limit,  createdBy } = query;
+  const { category, brand, name, min, max, offset, limit, createdBy } = query;
   const filters = {};
   const sort = query.sort ? JSON.parse(query.sort) : {};
 
@@ -15,9 +15,9 @@ const getProducts = async (query) => {
 
   if (category) filters.category = category; //Exact Match
   if (brand) filters.brand = { $in: brand.split(",") }; //Match data from the list of items
- if (name && name.trim() !== "") {
-  filters.name = { $regex: name, $options: "i" };
-} //Ilike match
+  if (name && name.trim() !== "") {
+    filters.name = { $regex: name, $options: "i" };
+  } //Ilike match
   if (min) filters.price = { $gte: min };
   if (max) filters.price = { ...filters.price, $lte: max };
   if (createdBy) filters.createdBy = createdBy;
@@ -31,13 +31,20 @@ const getProductById = async (id) => {
 };
 
 const createProduct = async (data, files, userId) => {
-  const uploadedFiles=await uploadFile(files);
-  const imageUrls=uploadedFiles.map((item)=>item.url);
+  const uploadedFiles = await uploadFile(files);
+  const imageUrls = uploadedFiles.map((item) => item.url);
 
-  const promptMessage=PRODUCT_DESCRIPTION_PROMPT.replace("%s",data.name).replace("%s",data.brand).replace("%s",data.category);
-  const description=data.description || await promptAI(promptMessage)
+  const promptMessage = PRODUCT_DESCRIPTION_PROMPT.replace("%s", data.name)
+    .replace("%s", data.brand)
+    .replace("%s", data.category);
+  const description = data.description || (await promptAI(promptMessage));
 
-  return await Product.create({ ...data, imageUrls, description, createdBy: userId });
+  return await Product.create({
+    ...data,
+    imageUrls,
+    description,
+    createdBy: userId,
+  });
 };
 
 const deleteProduct = async (id) => {
@@ -49,14 +56,12 @@ const deleteProduct = async (id) => {
 const updateProduct = async (id, data, files) => {
   // if (!mongoose.Types.ObjectId.isValid(id)) return null;
   await getProductById(id);
-  const updateData=data;
+  const updateData = data;
 
-  if(files && files.length>0){
-
-    const uploadedFiles=await uploadFile(files);
-    updateData.imageUrls=uploadedFiles.map((item)=>item.url);
+  if (files && files.length > 0) {
+    const uploadedFiles = await uploadFile(files);
+    updateData.imageUrls = uploadedFiles.map((item) => item.url);
   }
-
 
   return await Product.findByIdAndUpdate(id, updateData, {
     new: true,

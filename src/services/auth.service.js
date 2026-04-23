@@ -1,6 +1,6 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
-// import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken"
 import { createJWT } from "../utils/jwt.js";
 import ResetPassword from "../models/ResetPassword.js";
 // import { config } from "dotenv";
@@ -11,6 +11,13 @@ const login = async (data) => {
   const user = await User.findOne({
     $or: [{ email: data?.email }, { phone: data?.phone }],
   });
+
+
+  const token=createJWT({
+    userId:user._id,
+    roles:user.roles,
+  }  );
+
   if (!user)
     throw {
       status: 404,
@@ -39,6 +46,7 @@ const login = async (data) => {
     phone: user.phone,
     roles: user.roles,
     isActive: user.isActive,
+    token
   };
 };
 const register = async (data) => {
