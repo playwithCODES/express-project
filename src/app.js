@@ -17,6 +17,7 @@ import { ROLE_ADMIN, ROLE_MERCHANT, ROLE_USER } from "./constants/roles.js";
 import roleBasedAuth from "./middlewares/roleBasedAuth.js";
 import uploadFile from "./utils/fileUploader.js";
 import promptAI from "./utils/ai.js";
+import cors from "cors";
 
 const app = express();
 const upload = multer({storage: multer.memoryStorage()});
@@ -26,6 +27,7 @@ connectCloudinary();
 
 app.use(bodyParser.json());
 app.use(logger);
+app.use(cors());
 app.set("view engine", "hbs");
 app.use(cookieParser());
 
