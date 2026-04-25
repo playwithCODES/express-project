@@ -12,17 +12,17 @@ const login = async (data) => {
     $or: [{ email: data?.email }, { phone: data?.phone }],
   });
 
-  const token = createJWT({
-    userId: user._id,
-    roles: user.roles,
-  });
-
   if (!user)
     throw {
       status: 404,
 
       message: "Invalid Credentials",
     };
+
+  const token = createJWT({
+    userId: user._id,
+    roles: user.roles,
+  });
 
   if (!user.isActive)
     throw {
@@ -78,6 +78,7 @@ const register = async (data) => {
     userId: createdUser._id,
     roles: createdUser.roles,
   });
+
   return {
     _id: createdUser._id,
     name: createdUser.name,
