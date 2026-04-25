@@ -1,6 +1,6 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 import { createJWT } from "../utils/jwt.js";
 import ResetPassword from "../models/ResetPassword.js";
 // import { config } from "dotenv";
@@ -12,11 +12,10 @@ const login = async (data) => {
     $or: [{ email: data?.email }, { phone: data?.phone }],
   });
 
-
-  const token=createJWT({
-    userId:user._id,
-    roles:user.roles,
-  }  );
+  const token = createJWT({
+    userId: user._id,
+    roles: user.roles,
+  });
 
   if (!user)
     throw {
@@ -25,11 +24,11 @@ const login = async (data) => {
       message: "Invalid Credentials",
     };
 
-    if(!user.isActive)
-      throw {
-        status: 400,
-        message: "User deactivated. Please contact support.",
-      };
+  if (!user.isActive)
+    throw {
+      status: 400,
+      message: "User deactivated. Please contact support.",
+    };
 
   const isPasswordMatch = bcrypt.compareSync(data.password, user.password);
   if (!isPasswordMatch)
@@ -46,7 +45,7 @@ const login = async (data) => {
     phone: user.phone,
     roles: user.roles,
     isActive: user.isActive,
-    token
+    token,
   };
 };
 const register = async (data) => {
@@ -74,6 +73,11 @@ const register = async (data) => {
     address: data.address,
     password: hashedPassword,
   });
+
+  const token = createJWT({
+    userId: createdUser._id,
+    roles: createdUser.roles,
+  });
   return {
     _id: createdUser._id,
     name: createdUser.name,
@@ -82,6 +86,7 @@ const register = async (data) => {
     phone: createdUser.phone,
     roles: createdUser.roles,
     isActive: createdUser.isActive,
+    token,
   };
 };
 
