@@ -46,7 +46,8 @@ app.post("/gemini", async(req,res)=>{
 
 
 
-app.use("/api/products", upload.array("images", 5),productRouter);
+// app.use("/api/products", upload.array("images", 5),productRouter);
+app.use("/api/products", productRouter);
 app.use("/api/users", auth,upload.single("image"), userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/orders",auth, orderRoute);
