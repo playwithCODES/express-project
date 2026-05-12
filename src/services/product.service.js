@@ -11,7 +11,6 @@ const getProducts = async (query) => {
   const filters = {};
   const sort = query.sort ? JSON.parse(query.sort) : {};
 
-  // console.log(brand.split(","));
 
   if (category) filters.category = category; //Exact Match
   if (brand) filters.brand = { $in: brand.split(",") }; //Match data from the list of items
@@ -31,6 +30,8 @@ const getProductById = async (id) => {
 };
 
 const createProduct = async (data, files, userId) => {
+  console.log(userId);
+  
   const uploadedFiles = await uploadFile(files);
   const imageUrls = uploadedFiles.map((item) => item.url);
 

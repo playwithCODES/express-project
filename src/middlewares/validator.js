@@ -4,7 +4,6 @@ const validate = (schema) => (req, res, next) => {
   try {
     const parsedData = schema.parse(req.body);
 
-    // 🔥 THIS IS THE KEY LINE
     req.validatedData = parsedData;
 
     next();
